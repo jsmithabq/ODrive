@@ -1,0 +1,118 @@
+
+#content
+  #generic-area
+    %table
+      %tr(valign='top')
+        %td
+          %h3 User Profile
+          %p 
+          %form{:action => '/profile-user', :method => 'POST'}
+            %table
+              %tr
+                %td
+                  %label{:for => 'name'} Name:
+                %td
+                  %input{:type => 'text', :name => 'name',
+                    :value => @user_for_profile.name, :class => 'text'}
+              %tr
+                %td
+                  %label{:for => 'password_hint'} Password Hint:
+                %td
+                  %input{:type => 'text', :name => 'password_hint',
+                    :value => @user_for_profile.password_hint, :class => 'text'}
+              %tr
+                %td
+                  %label{:for => 'password'} Password (for Verification):
+                %td
+                  %input{:type => 'password', :name => 'password', :class => 'text'}
+              %tr
+                %td
+                  %label{:for => 'style'} Style:
+                %td
+                  %select(id='style' name='style')
+                    - @odrive_styles.each do |style|
+                      - if style == @user_style
+                        %option{:selected => true}= style
+                      - else
+                        %option{:selected => false}= style
+              %tr
+                %td &nbsp;
+              %tr
+                %td
+                  %input{:type => 'submit', :value => 'Update User Profile', :class => 'button'}
+        %td &nbsp;
+        %td &nbsp;
+        %td &nbsp;
+        %td &nbsp;
+        %td
+          %h3 ODrive Resource Profile
+          %p 
+          %form{:action => '/profile-resource', :method => 'POST'}
+            %table
+              %tr
+                %td
+                  %label{:for => 'cloud_host'} ODrive Host:
+                %td
+                  %select(id='cloud_host' name='cloud_host')
+                    - @odrive_hosts.each_with_index do |host, i|
+                      - if i == 0 && @odrive_no_hosts_list.include?(@user_for_profile.cloud_host) 
+                        %option{:selected => true}= @odrive_initial_host
+                      - elsif host == @user_for_profile.cloud_host
+                        %option{:selected => true}= host
+                      - else
+                        %option{:selected => false}= host
+              %tr
+                %td
+                  %label{:for => 'cloud_tenant'} OpenStack Tenant:
+                %td
+                  %input{:type => 'text', :name => 'cloud_tenant',
+                    :value => @user_for_profile.cloud_tenant, :class => 'text'}
+              %tr
+                %td
+                  %label{:for => 'cloud_user'} OpenStack Userid:
+                %td
+                  %input{:type => 'text', :name => 'cloud_user',
+                    :value => @user_for_profile.cloud_user, :class => 'text'}
+              %tr
+                %td
+                  %label{:for => 'cloud_password'} OpenStack Password:
+                %td
+                  %input{:type => 'password', :name => 'cloud_password', :class => 'text'}
+              %tr
+                %td
+                  &nbsp;
+              %tr
+                %td
+                  %input{:type => 'submit', :value => 'Update Resource Profile', :class => 'button'}
+      %tr(valign='top')
+        %td
+          %h3 Password
+          %p 
+          %form{:action => '/profile-pw', :method => 'POST'}
+            %table
+              %tr
+                %td
+                  %label{:for => 'cur_password'} Current Password:
+                %td
+                  %input{:type => 'password', :name => 'cur_password', :class => 'text'}
+              %tr
+                %td
+                  %label{:for => 'new_password'} New Password:
+                %td
+                  %input{:type => 'password', :name => 'new_password', :class => 'text'}
+              %tr
+                %td
+                  %label{:for => 'new_password2'} Verify New Password:
+                %td
+                  %input{:type => 'password', :name => 'new_password2', :class => 'text'}
+              %tr
+                %td
+                  &nbsp;
+              %tr
+                %td
+                  %input{:type => 'submit', :value => 'Update Password', :class => 'button'}
+              %tr(align='left')
+                %td &nbsp;
+              %tr(align='left')
+                %td
+                  %a(href='/web/containers') Containers

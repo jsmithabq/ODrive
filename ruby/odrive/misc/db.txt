@@ -1,0 +1,12 @@
+
+From the 'odrive/db' directory (not the 'odrive' directory):
+
+ruby -I .. user_db_display_users.rb
+
+ruby -I .. user_db_display_metadata.rb
+
+ruby -I .. user_db_reset_user_password.rb
+
+ruby -I .. user_db_delete_user.rb
+
+ruby -I .. user_db_create_db.rb # destroys the existing database!!!!!!!

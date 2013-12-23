@@ -1,0 +1,42 @@
+%html
+  %head
+    %title ODrive
+    %link{:rel => 'stylesheet', :href => '/stylesheet.css', :type => "text/css",
+      :id => 'stylesheet'}
+    :javascript
+      function changeStyleSheet() {
+        selectbox = document.getElementById('style')
+        s = new String(selectbox.options[selectbox.selectedIndex].value);
+        console.log("Style is: " + s)
+        // ??? - use Sinatra GET instead
+        //document.getElementById('stylesheet').href =
+        //  "/style" + s.toLowerCase() + ".css";
+      }
+      function updateClock() {
+        var date = new Date();
+        document.getElementById('zulu-date').innerHTML = date.toGMTString();
+        setTimeout("updateClock()", 1000);
+      }
+      function init() {
+        updateClock();
+        //document.upload_form.object_name.onmouseover = whatever;
+        //document.getElementById('style').onchange = changeStyleSheet;
+      }
+      window.onload = init;
+  %body(topmargin=3)
+    #header
+      %p(class='banner' align='center')= @banner
+    #mast
+      #logo
+        %a(id='logo-a' href='/') ODrive
+      #commands
+        %table(align='center')
+          %tr(align='right' valign='center')
+            %td &nbsp;
+          %tr(align='right' valign='center')
+            %td
+              %a(id='zulu-date')
+    %content
+      = yield
+    #footer
+      %p(class='banner' align='center')= @banner

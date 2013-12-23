@@ -1,0 +1,67 @@
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ ruby get_swift_endpoint.rb cloud1
+Token: bf1e49a3c44c4539837dc28931acfb53
+Endpoint: http://swift2:8080/v1/AUTH_f1bdabd926fd46749edb97c4270c6be4
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ 
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ ruby get_swift_endpoint.rb cloud2
+Token: 636d970e87264bdfbb478cddc15e8187
+Endpoint: http://swift1:8080/v1/AUTH_b10a7f5ade63426db25e36448ac1aaae
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ 
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ ruby get_containers_rc.rb http://swift1:8080/v1/AUTH_b10a7f5ade63426db25e36448ac1aaae 636d970e87264bdfbb478cddc15e8187
+Container: 10
+  k = bytes, v = 450800
+  k = name, v = 10
+  k = count, v = 2
+Container: 101112
+  k = bytes, v = 291
+  k = name, v = 101112
+  k = count, v = 1
+...
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ 
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ ruby get_containers_net.rb http://swift1:8080/v1/AUTH_b10a7f5ade63426db25e36448ac1aaae 636d970e87264bdfbb478cddc15e8187
+#<Net::HTTPOK:0x7fddd2793c38>
+10
+101112
+...
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ 
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ ruby get_objects_name.rb http://swift1:8080/v1/AUTH_b10a7f5ade63426db25e36448ac1aaae 636d970e87264bdfbb478cddc15e8187 def
+04MAY09310403017AA52000_01O0101.ps_ssd
+06MAY09310301013AA53000_01O0101.aux
+...
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ 
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ ruby get_objects_plus.rb http://swift1:8080/v1/AUTH_b10a7f5ade63426db25e36448ac1aaae 636d970e87264bdfbb478cddc15e8187 def
+Object: 04MAY09310403017AA52000_01O0101.ps_ssd
+  k = bytes, v = 480
+  k = name, v = 04MAY09310403017AA52000_01O0101.ps_ssd
+  k = content_type, v = application/x-www-form-urlencoded
+  k = hash, v = 3f4895650e0b02f36d691665f56dfce5
+  k = last_modified, v = 2013-03-11T13:39:12.497010
+Object: 06MAY09310301013AA53000_01O0101.aux
+  k = bytes, v = 346112
+  k = name, v = 06MAY09310301013AA53000_01O0101.aux
+  k = content_type, v = application/x-www-form-urlencoded
+  k = hash, v = 97c3f63c67d2a016a953157773017f06
+  k = last_modified, v = 2013-03-20T12:08:19.450290
+...
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ 
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ ruby get_head_net.rb http://swift2:8080/v1/AUTH_f1bdabd926fd46749edb97c4270c6be4 eaaa006feec549ea9932dc03846fe05e demo-test-container-2
+#<Net::HTTPNoContent:0x7f492352a490>
+nil
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ ruby get_head_rc.rb http://swift2:8080/v1/AUTH_f1bdabd926fd46749edb97c4270c6be4 eaaa006feec549ea9932dc03846fe05e demo-test-container-2
+response object is: ''
+response headers are:
+  k = x_trans_id, v = tx2fe7ba41a55640a99510493f0198b5c5
+  k = x_container_object_count, v = 0
+  k = date, v = Mon, 08 Apr 2013 20:10:06 GMT
+  k = x_container_bytes_used, v = 0
+  k = content_length, v = 0
+  k = accept_ranges, v = bytes
+object count is:  0
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/swift$ 

@@ -1,0 +1,85 @@
+
+#content
+  #generic-area
+    %table(cellspacing='3')
+      %tr(valign='top')
+        %td
+          %h3 Containers
+          %p 
+          %form{:name => 'container_create_form', :action => '/create-container',
+              :method => 'POST'}
+            %table
+              %tr
+                %td
+                  %label{:for => 'container_name'} Container Name:
+                %td
+                  %input{:type => 'text', :name => 'container_name', :class => 'text',
+                    :size => '40', :maxlength => '100', :value => ""}
+                %td
+                  %input{:type => 'submit', :value => 'Create', :class => 'button'}
+                %td
+                  %spacer(width='50')
+        %td
+          %spacer(width='70')
+      %tr(valign='top')
+        %td
+          %form{:name => 'container_row_form', :action => '/containers-action', :method => 'POST'}
+            %table
+              %tr(align='left')
+                %td
+                  %input{:type => 'submit', :name => "delete_containers_top",
+                    :value => 'Delete', :class => 'button'}
+              %tr(align='left')
+                %th &nbsp;
+                %th Container Name
+                %th &nbsp;
+                %th &nbsp;
+                %th &nbsp;
+                %th Objects
+                %th &nbsp;
+                %th &nbsp;
+                %th &nbsp;
+                %th Size
+                %th &nbsp;
+                %th &nbsp;
+                %th &nbsp;
+                %th Actions
+                %th &nbsp;
+              - @containers.each do |container|
+                %tr(align='left')
+                  %td(align='center')
+                    %input{:type => 'checkbox', :name => "checkbox_#{container['name']}",
+                      :value => 'yes', :class => 'button'}
+                  %td
+                    %a(href="/web/containers/#{container['name']}") #{container['name']}
+                  %td &nbsp;
+                  %td &nbsp;
+                  %td &nbsp;
+                  %td
+                    #{container['count']}
+                  %td &nbsp;
+                  %td &nbsp;
+                  %td &nbsp;
+                  %td
+                    #{bytes_to_size_rep(container['bytes'])}
+                  %td &nbsp;
+                  %td &nbsp;
+                  %td &nbsp;
+                  %td
+                    %select(name='action_#{container['name']}')
+                      - ['List Objects', 'Upload Object', 'Delete Container'].each do |action|
+                        %option= action
+                  %td
+                    %input{:type => 'submit', :name => "current_container_#{container['name']}",
+                      :value => 'Go!', :class => 'button'}
+              %tr(align='left')
+                %td
+                  %input{:type => 'submit', :name => "delete_containers_bottom",
+                    :value => 'Delete', :class => 'button'}
+              %tr(align='left')
+                %td &nbsp;
+            %table
+              %tr(align='left')
+                %td
+                  %a(href='/web/containers') Containers
+

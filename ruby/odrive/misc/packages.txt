@@ -1,0 +1,5 @@
+
+# package requirements for ODrive:
+
+apt-get install libjson-ruby libjson-ruby-doc libpgsql-ruby libpgsql-ruby-doc librack-ruby librestclient-ruby libruby libsequel-ruby libsinatra-ruby libsqlite3-ruby rake ruby thin ruby-haml git git-core giggle git-doc git-gui git-man gitk
+

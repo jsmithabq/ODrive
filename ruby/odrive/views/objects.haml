@@ -1,0 +1,99 @@
+
+#content
+  #generic-area
+    %table(cellspacing='3')
+      %tr(valign='top')
+        %td
+          %h3= @heading 
+          %p 
+          %form{:name => 'object_upload_form', :action => '/upload-object',
+              :method => 'POST', :enctype => 'multipart/form-data'}
+            %table
+              %tr
+                %td
+                  %table
+                    %tr
+                      %td
+                        %label{:title => 'Specify an object name (optional)',
+                          :for => 'object_name'} Object Name:
+                      %td
+                        %a{:title => 'Specify an object name (optional)',
+                          :id => 'object-help'} ?
+                %td
+                  %input{:title => 'Specify an object name (optional)', :id => 'object-name',
+                    :type => 'text', :name => 'object_name', :class => 'text',
+                    :size => '40', :maxlength => '100', :value => ""}
+                %td &nbsp;
+                %td &nbsp;
+                %td
+                  %label{:for => 'upfile'} File:
+                %td
+                  %input{:type => 'file', :name => 'upfile', :value => "nofile"}
+                %td
+                  %input{:type => 'submit', :value => 'Upload', :class => 'button'}
+                %td
+                  %input{:type => 'hidden', :name => 'container_name',
+                    :value => @container_name}
+                %td
+                  %spacer(width='50')
+        %td
+          %spacer(width='70')
+      %tr(valign='top')
+        %td
+          %form{:name => 'object_row_form', :action => '/objects-action', :method => 'POST'}
+            %table
+              %tr(align='left')
+                %td
+                  %input{:type => 'submit', :name => "delete_objects_top",
+                    :value => 'Delete', :class => 'button'}
+              %tr(align='left')
+                %th &nbsp;
+                %th Object Name
+                %th &nbsp;
+                %th &nbsp;
+                %th &nbsp;
+                %th Size
+                %th &nbsp;
+                %th &nbsp;
+                %th &nbsp;
+                %th Actions
+                %th &nbsp;
+              - @objects.each do |object|
+                %tr(align='left')
+                  %td(align='center')
+                    %input{:type => 'checkbox', :name => "checkbox_#{object['name']}",
+                      :value => 'yes', :class => 'button'}
+                  %td(id='td-object')
+                    #{object['name']}
+                  %td &nbsp;
+                  %td &nbsp;
+                  %td &nbsp;
+                  %td(id='td-object')
+                    #{bytes_to_size_rep(object['bytes'])}
+                  %td &nbsp;
+                  %td &nbsp;
+                  %td &nbsp;
+                  %td
+                    %select(name="action_#{object['name']}")
+                      - ['Download Object', 'Copy Object', 'Delete Object', 'Object Metadata'].each do |action|
+                        %option= action
+                  %td
+                    %input{:type => 'submit', :name => "current_object_#{object['name']}",
+                      :value => 'Go!', :class => 'button'}
+              %tr(align='left')
+                %td
+                  %input{:type => 'submit', :name => "delete_objects_bottom",
+                    :value => 'Delete', :class => 'button'}
+              %tr(align='left')
+                %td
+                  %input{:type => 'hidden', :name => 'container_name', :value => @container_name}
+                  %input{:type => 'hidden', :name => 'current_url', :value => "#{@current_url}"}
+                  %input{:type => 'hidden', :name => 'redirect_url', :value => "#{@redirect_url}"}
+              %tr(align='left')
+                %td &nbsp;
+            %table
+              %tr(align='left')
+                %td
+                  %a(href='/web/containers') Containers
+              %tr(align='left')
+                %td= "<a href='/web/containers/#{@container_name}'>Container #{@container_name}</a>"

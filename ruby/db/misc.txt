@@ -1,0 +1,11 @@
+require 'dbi'
+require 'base64'
+
+dbh = DBI.connect('DBI:Pg:somehost:cholla',
+  "someuser", Base64.decode64("d2Vi"))
+dbh.disconnect
+
+dbh.select_one("select count(*) from detection")
+dbh.select_one("select count(*) from vault")
+
+psql -h cholla -d somedatabase -U someuser

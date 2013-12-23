@@ -1,0 +1,13 @@
+%html
+  %head
+    %title Today's Date
+    :javascript 
+      function print_todays_date( ) {
+        var d = new Date( );
+        document.write(d.toLocaleString( ));
+      }
+  %body
+    %p The date and time are:
+    :javascript
+      print_todays_date();
+

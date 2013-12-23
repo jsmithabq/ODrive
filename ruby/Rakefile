@@ -1,0 +1,16 @@
+task :default => [:odrive]
+
+task :odrive do
+  sh "cd odrive ; ruby -I . odriveapp.rb"
+end
+  
+task :migration do
+  sh "date=`date \"+%m%d%y\"` ; \
+      mv -f odrive/store/ODriveUserManagement.db odrive/store/ODriveUserManagement.db.${date}"
+  sh "cd odrive ; sequel1.8 -m ./migrations sqlite://store/ODriveUserManagement.db"
+end
+
+task :docs do
+  sh "rm -fr docs; rdoc -S -a -x db -x misc -x rack -x ramaze -x sinatra -x ws -o docs"
+end
+

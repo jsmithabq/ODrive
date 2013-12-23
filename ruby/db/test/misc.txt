@@ -1,0 +1,34 @@
+jsmith@cottonwood:~$ irb
+irb(main):001:0> require 'sequel'
+=> true
+irb(main):002:0> DB = Sequel.connect('postgres://<user>:<password>@cholla/whatever')
+=> #<Sequel::Postgres::Database: "postgres://<user>:<password>@cholla/whatever">
+irb(main):003:0> ds = DB[:script]
+=> #<Sequel::Postgres::Dataset: "SELECT * FROM \"script\"">
+irb(main):004:0> ds
+=> #<Sequel::Postgres::Dataset: "SELECT * FROM \"script\"">
+irb(main):005:0> ds.each do |s|
+irb(main):006:1* puts(s)
+irb(main):007:1> end
+added_dateThu Aug 19 11:32:57 -0600 2010content(define interpreter "whatever" "-l")
+   (forward quote
+   (image-done) (exit))
+scriptid1
+added_dateThu Aug 19 11:43:57 -0600 2010content(define interpreter "whatever" "-l")
+  (forward quote
+  (image-done) (exit))
+scriptid2
+added_dateThu Aug 19 13:19:00 -0600 2010content(define interpreter "whatever" "-l")
+    (forward quote
+    (image-done) (exit))
+scriptid3
+added_dateTue Aug 24 11:34:20 -0600 2010content(define interpreter "whatever" "-l")
+     (forward quote
+     (image-done) (exit))
+scriptid4
+=> #<Sequel::Postgres::Dataset: "SELECT * FROM \"script\"">
+irb(main):008:0> ds.count
+=> 4
+irb(main):009:0> id_and_date = ds.map {|r| [r[:scriptid], r[:added_date]]}
+=> [[1, Thu Aug 19 11:32:57 -0600 2010], [2, Thu Aug 19 11:43:57 -0600 2010], [3, Thu Aug 19 13:19:00 -0600 2010], [4, Tue Aug 24 11:34:20 -0600 2010]]
+irb(main):010:0> 

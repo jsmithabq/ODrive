@@ -1,0 +1,34 @@
+
+#content
+  #generic-area
+    %h3 Upload an Object
+    %p 
+    %form{:name => 'upload_form', :action => '/upload-object', :method => 'POST',
+        :enctype => 'multipart/form-data'}
+      %table
+        %tr
+          %td
+            %label{:for => 'container_name'} Container Name:
+          %td
+            %input{:type => 'text', :name => 'container_name', :class => 'text',
+              :size => '40', :maxlength => '100', :value => "#{@container_name}"}
+        %tr
+          %td
+            %table
+              %tr
+                %td
+                  %label{:title => 'Specify an object name (optional)',
+                    :for => 'object_name'} Object Name:
+                %td
+                  %a{:title => 'Specify an object name (optional)', :id => 'object-help'} ?
+          %td
+            %input{:title => 'Specify an object name (optional)', :id => 'object-name',
+              :type => 'text', :name => 'object_name', :class => 'text',
+              :size => '40', :maxlength => '100', :value => ""}
+        %tr
+          %td
+            %label{:for => 'upfile'} File:
+          %td
+            %input{:type => 'file', :name => 'upfile',
+              :size => '40', :maxlength => '100', :value => "nofile"}
+      %input{:type => 'submit', :value => 'Upload', :class => 'button'}

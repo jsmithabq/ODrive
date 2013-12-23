@@ -1,0 +1,90 @@
+
+#### ODrive Commands
+
+ruby test_get_headers.rb localhost 6799
+
+ruby test_get_index.rb localhost 6799
+
+ruby test_get_about.rb localhost 6799
+
+python test_get_about.py
+
+ruby test_get_containers_xml.rb localhost 6799
+
+ruby test_get_containers_yaml.rb localhost 6799
+
+ruby test_get_object.rb localhost 6799 containers/def/objects/test.txt
+
+ruby test_get_one_resource_xml.rb localhost 6799 containers
+
+ruby test_get_one_resource_xml.rb creosote 6799 containers/demo-test-container
+
+ruby test_get_one_resource_xml.rb localhost 6799 containers/demo-test-container/count
+
+ruby test_get_resource.rb localhost 6799
+
+ruby test_get_users_xml.rb localhost 6799
+
+ruby test_post_login.rb localhost 6799
+
+ruby test_post_object_metadata.rb localhost 6799 containers/def/objects/test.txt/metadata
+ruby test_post_object_metadata.rb localhost 6799 containers/def/objects/Cholla.jpg/metadata
+
+ruby test_put_object.rb localhost 6799 containers/abc/objects/test.txt
+
+ruby test_put_container.rb localhost 6799 containers/123
+
+ruby test_write_object.rb localhost 6799 containers/def/objects/Hedgehog.jpg
+
+# NOT CURRENTLY WORKING with Swift...
+# destination/target <- source
+ruby test_copy_object_put.rb localhost 6799 containers/abc/objects/Hedgehog.jpg containers/def/object
+
+# source -> destination/target
+ruby test_copy_object_copy.rb localhost 6799 containers/abc/objects/Hedgehog.jpg containers/def/object
+
+python test_delete_resource.py
+
+ruby test_delete_resource_net.rb localhost 6799 rest/containers/def/objects/MIST.desktop
+ruby test_delete_resource_rc.rb localhost 6799 rest/containers/def/objects/MIST.desktop
+ruby test_delete_resource_net.rb localhost 6799 containers/def/objects/Cholla.jpg
+
+
+#### Nova / Swift Commands
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/odrive/client$ curl -d '{"auth":{"tenantName": "demo", "passwordCredentials":{"username": "test", "password": "secret"}}}' -H "Content-type: application/json" http://cloud1:35357/v2.0/tokens | json_reformat
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2545    0  2448  100    97  16437    651 --:--:-- --:--:-- --:--:-- 16540
+{
+}
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/odrive/client$ 
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/odrive/client$ curl -d '{"auth":{"tenantName": "demo", "passwordCredentials":{"username": "test", "password": "secret"}}}' -H "Content-type: application/json" http://cloud2:35357/v2.0/tokens | json_reformat
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2484    0  2387  100    97  29444   1196 --:--:-- --:--:-- --:--:-- 30215
+{
+}
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/odrive/client$ 
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/odrive/client$ curl -k -H 'X-Auth-Token: d4534c65fcdf430eb32122ae79e26c53' http://swift1:8080/v1/AUTH_b10a7f5ade63426db25e36448ac1aaae
+10
+123
+789
+8
+abc
+admin-test-container
+admin-test-container-2
+def
+demo-test-container
+ghi
+juju-container
+mno
+pqr
+test-container
+xyz
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/odrive/client$ 
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/odrive/client$ curl -k -X HEAD -H 'X-Auth-Token: d4534c65fcdf430eb32122ae79e26c53' http://swift1:8080/v1/AUTH_b10a7f5ade63426db25e36448ac1aaae/def
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/odrive/client$ 

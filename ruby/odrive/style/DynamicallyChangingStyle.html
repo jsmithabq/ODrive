@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Dynamically Applying CSS Class to a Tag</title>
+<style>
+class1{
+        color:#000;
+        font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size:24px;
+}
+.class2{
+        color:#F00;
+        font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size:24px;
+        border:solid 1px #F00;
+        padding:5px;
+}
+</style>
+<script language="javascript"> 
+        function applyClass(){
+               var e=document.getElementById('sample');
+               e.className='class2';
+        }
+</script>
+</head>
+<body>
+        <div class="class1" id="sample">Sample Text</div>
+    <br />
+    <input type="button" value="Apply Different Class" onclick="applyClass()" />
+</body>
+</html>
+

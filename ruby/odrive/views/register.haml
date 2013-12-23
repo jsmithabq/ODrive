@@ -1,0 +1,30 @@
+
+#content
+  #generic-area
+    %h3 Registration
+    %p 
+    %p Please register:
+    %form{:action => '/register', :method => 'POST'}
+      %table
+        %tr
+          %td
+            %label{:for => 'name'} Name:
+          %td
+            %input{:type => 'text', :name => 'name', :class => 'text'}
+        %tr
+          %td
+            %label{:for => 'userid'} User ID:
+          %td
+            %input{:type => 'text', :name => 'userid', :class => 'text'}
+        %tr
+          %td
+            %label{:for => 'password'} Password:
+          %td
+            %input{:type => 'password', :name => 'password', :class => 'text'}
+        %tr
+          %td
+            %label{:for => 'password2'} Verify Password:
+          %td
+            %input{:type => 'password', :name => 'password2', :class => 'text'}
+      %input{:type => 'submit', :value => 'Register', :class => 'button'}
+

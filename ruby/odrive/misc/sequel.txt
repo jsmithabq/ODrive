@@ -1,0 +1,4 @@
+
+From the 'odrive' directory (not the 'odrive/misc' directory):
+
+sequel -m ./migrations sqlite://store/ODriveUserManagement.db

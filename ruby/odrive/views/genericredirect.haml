@@ -1,0 +1,12 @@
+
+#content
+  #generic-area
+    %h3= @heading
+    %table(cellspacing='3')= @output
+    %form{:action => '/generic-redirect', :method => 'POST'}
+      %table
+        %tr
+          %td
+            %input{:type => 'submit', :value => 'Back', :class => 'button'}
+          %td
+            %input{:type => 'hidden', :name => 'redirect', :value => @redirect_url}

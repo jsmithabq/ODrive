@@ -1,0 +1,85 @@
+%html
+  %head
+    %title ODrive
+    %link{:rel => 'stylesheet', :href => '/stylesheet.css', :type => "text/css",
+      :id => 'stylesheet'}
+    :javascript
+      function changeStyleSheet() {
+        selectbox = document.getElementById('style')
+        s = new String(selectbox.options[selectbox.selectedIndex].value);
+        console.log("Style is: " + s)
+        // ??? - use Sinatra GET instead
+        //document.getElementById('stylesheet').href =
+        //  "/style" + s.toLowerCase() + ".css";
+      }
+      function updateClock() {
+        var date = new Date();
+        document.getElementById('zulu-date').innerHTML = date.toGMTString();
+        setTimeout("updateClock()", 1000);
+      }
+      function init() {
+        updateClock();
+        //document.upload_form.object_name.onmouseover = whatever;
+        //document.getElementById('style').onchange = changeStyleSheet;
+      }
+      window.onload = init;
+  %body(topmargin=3)
+    #header
+      %p(class='banner' align='center')= @banner
+    #mast
+      #logo
+        %a(id='logo-a' href='/') ODrive
+      #commands
+        %table(align='right')
+          %tr(align='right')
+            %td
+              %a(id='cmd-a' href='/') Home
+            %td &nbsp;
+            %td
+              %a(id='cmd-a' href='/web/containers') Containers
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td
+              %a(id='cmd-a' href='/login') Login
+            %td &nbsp;
+            %td
+              %a(id='cmd-a' href='/logout') Logout
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td
+              %a(id='cmd-a' href='/register') Register
+            %td &nbsp;
+            %td
+              %a(id='cmd-a' href='/profile') Profile
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td
+              %a(id='cmd-a' href='/about') About <em>ODrive</em>
+          %tr(align='right' valign='bottom')
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td &nbsp;
+            %td
+              %a(id='zulu-date')
+    %content
+      = yield
+    #footer
+      %p(class='banner' align='center')= @banner

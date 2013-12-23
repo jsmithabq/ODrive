@@ -1,0 +1,15 @@
+
+#content
+  #generic-list
+    %h3= @heading
+    %p <strong><em>ODrive</em></strong> provides a simple web interface to an object-storage platform.
+    %h4 Summary details for this object storage platform:
+    %table= @output
+    %h4 Summary details for the <em>ODrive</em> application server:
+    %table(cellspacing='3')= @output_odrive
+    %table
+      %tr(align='left')
+        %td &nbsp;
+      %tr(align='left')
+        %td
+          %a(href='/web/containers') Containers

@@ -1,0 +1,47 @@
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/sinatra$ b64encode.py 'admin:admin'
+'admin:admin' --> 'YWRtaW46YWRtaW4='
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/sinatra$ 
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/sinatra$ curl -k -v -H 'Authorization: Basic YWRtaW46YWRtaW4=' localhost:4567
+* About to connect() to localhost port 4567 (#0)
+*   Trying 127.0.0.1... connected
+* Connected to localhost (127.0.0.1) port 4567 (#0)
+> GET / HTTP/1.1
+> User-Agent: curl/7.21.3 (x86_64-pc-linux-gnu) libcurl/7.21.3 OpenSSL/0.9.8o zlib/1.2.3.4 libidn/1.18
+> Host: localhost:4567
+> Accept: */*
+> Authorization: Basic YWRtaW46YWRtaW4=
+> 
+< HTTP/1.1 200 OK
+< Content-Type: text/html
+< Content-Length: 26
+< Connection: keep-alive
+< Server: thin 1.2.4 codename Flaming Astroboy
+< 
+* Connection #0 to host localhost left intact
+* Closing connection #0
+This page is unrestricted.
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/sinatra$ 
+
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/sinatra$ curl -k -v -H 'Authorization: Basic YWRtaW46YWRtaW4=' localhost:4567/protected
+* About to connect() to localhost port 4567 (#0)
+*   Trying 127.0.0.1... connected
+* Connected to localhost (127.0.0.1) port 4567 (#0)
+> GET /protected HTTP/1.1
+> User-Agent: curl/7.21.3 (x86_64-pc-linux-gnu) libcurl/7.21.3 OpenSSL/0.9.8o zlib/1.2.3.4 libidn/1.18
+> Host: localhost:4567
+> Accept: */*
+> Authorization: Basic YWRtaW46YWRtaW4=
+> 
+< HTTP/1.1 200 OK
+< Content-Type: text/html
+< Content-Length: 47
+< Connection: keep-alive
+< Server: thin 1.2.4 codename Flaming Astroboy
+< 
+* Connection #0 to host localhost left intact
+* Closing connection #0
+This page is restricted to authenticated users.
+jsmith@creosote:~/X/LocalGit/ODrive/ruby/sinatra$
+

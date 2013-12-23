@@ -1,0 +1,15 @@
+echo "==============================="
+ruby test_activerecord.rb
+echo "==============================="
+ruby test_postgres-pr.rb
+echo "==============================="
+ruby test_dbi_postgres_database_metadata.rb
+echo "==============================="
+ruby test_sequel_postgres.rb
+echo "==============================="
+ruby test_sequel_postgres_database_metadata.rb
+echo "==============================="
+ruby test_sequel_postgres_database_query_script.rb
+echo "==============================="
+ruby test_sequel_postgres_database_model.rb
+echo "==============================="

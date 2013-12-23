@@ -1,0 +1,32 @@
+
+#content
+  #generic-area
+    %h3 Delete Object Confirmation
+    %p 
+    %p Are you absolutely sure?
+    %form{:action => '/delete-object', :method => 'POST'}
+      %table(cellspacing='3')
+        %tr
+          %td
+            %label Container:
+          %td &nbsp;
+          %td
+            #{@container_name}
+        %tr
+          %td &nbsp;
+        %tr
+          %td
+            %label Object:
+          %td &nbsp;
+          %td
+            #{@object_name}
+        %tr
+          %td &nbsp;
+      %table(cellspacing='3')
+        %tr
+          %td
+            %input{:type => 'submit', :name => 'action', :value => 'Delete Object', :class => 'button'}
+          %td
+            %input{:type => 'submit', :name => 'action', :value => 'Cancel', :class => 'button'}
+      %input{:type => 'hidden', :name => 'container_name', :value => @container_name}
+      %input{:type => 'hidden', :name => 'object_name', :value => @object_name}

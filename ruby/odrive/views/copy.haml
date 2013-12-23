@@ -1,0 +1,27 @@
+
+#content
+  #generic-area
+    %h3 Copy an Object
+    %p 
+    %form{:name => 'copy_form', :action => '/copy-object', :method => 'POST'}
+      %table
+        %tr
+          %td
+            %label{:for => 'from_container_name'} From Container:
+          %td
+            %input{:type => 'text', :name => 'from_container_name', :class => 'text',
+              :size => '40', :maxlength => '100', :value => "#{@from_container_name}"}
+        %tr
+          %td
+            %label{:for => 'to_container_name'} To Container:
+          %td
+            %input{:type => 'text', :name => 'to_container_name', :class => 'text',
+              :size => '40', :maxlength => '100', :value => ""}
+        %tr
+          %td
+            %label{:for => 'to_object_name'} With Object Name:
+          %td
+            %input{:type => 'text', :name => 'to_object_name', :class => 'text',
+              :size => '40', :maxlength => '100', :value => "#{@from_object_name}"}
+      %input{:type => 'submit', :value => 'Copy', :class => 'button'}
+      %input{:type => 'hidden', :name => 'from_object_name', :value => @from_object_name}

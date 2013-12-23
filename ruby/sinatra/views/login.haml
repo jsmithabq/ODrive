@@ -1,0 +1,19 @@
+
+#content
+  %h3 User Authentication
+  %p 
+  %p Please log in:
+  %form{:action => '/login', :method => 'POST'}
+    %table
+      %tr
+        %td
+          %label{:for => 'userid'} User ID:
+        %td
+          %input{:type => 'text', :name => 'userid', :class => 'text'}
+      %tr
+        %td
+          %label{:for => 'password'} Password:
+        %td
+          %input{:type => 'password', :name => 'password', :class => 'text'}
+    %input{:type => 'submit', :value => 'Log in', :class => 'button'}
+

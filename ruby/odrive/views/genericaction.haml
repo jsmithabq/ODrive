@@ -1,0 +1,17 @@
+
+#content
+  #generic-area
+    %h3= @heading
+    %table(cellspacing='3')= @output
+    %table
+      %tr
+        %td &nbsp;
+      %tr
+        %td
+          %a(href='/') Home
+      %tr
+        %td
+          %a(href='/web/containers') Containers
+      - @urls && @urls.each do |u|
+        %tr
+          %td= "<a href='#{u[:url]}'>#{u[:name]}</a>"
