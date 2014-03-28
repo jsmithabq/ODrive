@@ -86,7 +86,8 @@ Stage 2
 
   ./ruby/odrive/store/ODriveUserManagement.db
 
-ODrive provides manual utilities for manipulating the database as well:
+ODrive provides manual utilities for manipulating the database in the
+following directory:
 
   ./ruby/odrive/db
 
@@ -99,7 +100,7 @@ ODrive provides open user registration for the app server.  ODrive does
 _not_ store each user's password; ODrive creates and stores a salted
 hash upon user account creation.  Each log-in attempts reads the
 transient password from the log-in text field, applies the salted hash,
-and compared the result to the value stored in the database.
+and compared the salted hash to the value stored in the database.
 
 ODrive cannot, however, "overrule" the password management for the
 target distributed storage.  For example, OpenStack Swift uses an
@@ -108,14 +109,14 @@ managed distributed storage account, in order to pass the password to
 the distributed storage driver, e.g., ODrive's Swift storage driver.
 
 To use the manual utilities from within the './ruby/odrive/db'
-directory, include /reference the './ruby/odrive' directory, e.g.:
+directory, include (reference) the './ruby/odrive' directory, e.g.:
 
 jsmith@sage:~/.../ODrive/ruby/odrive/db$ ruby -I .. user_db_display_users.rb
 userid, password, name, password_hint, password_stale, style, cloud_host, cloud_tenant, cloud_user, cloud_password
 1: admin, 91608911a1ef6ec3c89c5b3cce2b3dd6, Administrator The Great, (none), false, default, (no cloud host), (no cloud tenant), (no cloud user), (no cloud password)
 ...
 
-WARNING:  These utilities fully interrogat the database, e.g.,
+WARNING:  These utilities fully interrogate the database, e.g.,
 displaying passwords, so this part of the (developer) filesystem should
 be protected from end-users of the ODrive app server.
 

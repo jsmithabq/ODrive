@@ -26,7 +26,7 @@ ODrive provides:
   3. An HTML web interface to object services.
 
 ODrive can support multiple OpenStack Swift object stores, selectable by
-the user from the Profile page..  For security, the hostname for each
+the user from the Profile page.  For security, the hostname for each
 supported Swift object store must be specified in the source code
 ('./ruby/odrive/odrive_info.rb'):
 
