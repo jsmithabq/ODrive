@@ -122,3 +122,7 @@ WARNING:  These utilities fully interrogate the database, e.g.,
 displaying passwords, so this part of the (developer) filesystem should
 be protected from end-users of the ODrive app server.
 
+Testing History
+
+ODrive has been tested extensively with Ubuntu 12.04, using the default
+Ruby, Sequel, HAML, and other packages.
