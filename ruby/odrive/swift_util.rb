@@ -44,7 +44,7 @@ module SwiftUtil
   #
   # SwiftUtil configuration file.
   #
-  CONFIG_FILE = './swift.config'
+  CONFIG_FILE = './conf/swift.conf'
 
   #
   # Acceptable logging devices.
@@ -115,7 +115,7 @@ module SwiftUtil
     end
 
     #
-    # Creates a logger based on the configuration settings from <tt>swift.config</tt>.
+    # Creates a logger based on the configuration settings from <tt>swift.conf</tt>.
     #
     # Returns the reference to the logger instance.
     #
@@ -176,7 +176,7 @@ module SwiftUtil
 
     def initialize(
         name=CONFIG.get_value(:default_name, 'Swift 1.0'),
-        host=CONFIG.get_value(:default_host, 'cloudhost.example.com'),
+        host=CONFIG.get_value(:default_host, '(no_swift_host)'),
         admin_port=CONFIG.get_value(:default_admin_port, '35357'),
         nova_port=CONFIG.get_value(:default_nova_port, '8774'),
         tenant=CONFIG.get_value(:default_tenant, 'demo'),

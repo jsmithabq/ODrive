@@ -24,6 +24,22 @@ module UserModels
   begin
     dbc = SqliteConnection.new(user_store)
     db = dbc.connect
+    if !(File.exists?(user_store) && !File.zero?(user_store))
+      warn("#{MN}::  user database does not exist; creating '#{user_store}'.")
+      aes = UserDBUtil::AESEncryptinator.new()
+      db.create_table :users do
+        String :userid, :primary_key => true, :null => false
+        String :password, :null => false
+        String :name, :null => false
+        String :password_hint, :null => false, :default => "(none)"
+        TrueClass :password_stale, :default => true
+        String :style, :null => false, :default => "default"
+        String :cloud_host, :null => false, :default => "(no cloud host)"
+        String :cloud_tenant, :null => false, :default => "(no cloud tenant)"
+        String :cloud_user, :null => false, :default => "(no cloud user)"
+        String :cloud_password, :null => false, :default => aes.encrypt("(no cloud password)")
+      end
+    end
   rescue => ex
     warn("#{MN}::  failed to connect to database '#{user_store}'.")
   end

@@ -26,8 +26,10 @@ ODRIVE_VERSION = '0.1'
 ODRIVE_AES = UserDBUtil::AESEncryptinator.new()
 #puts ODRIVE_AES.inspect
 
-ODRIVE_DEFAULT_HEADER = ""
-ODRIVE_CONFIG_FILE = './odrive.config'
+#ODRIVE_DEFAULT_HEADER_FOOTER = "Optional Banner"
+#ODRIVE_DEFAULT_HEADER_FOOTER = "ACME CORP PROPRIETARY CONTENT"
+ODRIVE_DEFAULT_HEADER_FOOTER = ""
+ODRIVE_CONFIG_FILE = './conf/odrive.conf'
 ODRIVE_COMPONENT_DIR = './components'
 USER_STORE_LOCATION = './store/ODriveUserManagement.db' # common to multiple apps
 
@@ -76,8 +78,7 @@ ODRIVE_NO_HOSTS_LIST = [ODRIVE_INITIAL_HOST, OPENSTACK_INITIAL_HOST]
 
 ODRIVE_HOSTS = [
   ODRIVE_INITIAL_HOST,
-  'r6201',
-  'r6202',
+  'localhost',
 ]
 
 ODRIVE_STYLE = 'Default'

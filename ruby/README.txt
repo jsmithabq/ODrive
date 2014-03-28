@@ -1,6 +1,21 @@
+ODrive
+
 Summary
 
-ODrive is a Ruby application server implemented with Sinatra.
+ODrive, provides an alternative front-end to object-storage services
+such as OpenStack Swift.  Currently, ODrive only provides drivers for
+Swift.  The objective is to support Ceph RADOSGW, as well as other
+services as they come to market.
+
+ODrive provides
+  1. A Ruby application server implemented with Sinatra.
+  2. A RESTful front-end, which, with driver support, can
+     support multiple object-storage services, providing
+     common services across object-storage back-end services.
+  3. An HTML web interface to object services.
+
+Contents
+
 
 Requirements
 
@@ -66,3 +81,41 @@ Stage 2
   Start a pairwise top-down and bottom-up design and development of
   end-user functionality, leveraging the RESTful resources as much as
   possible.
+
+5. ODrive creates a user-management database in the following location:
+
+  ./ruby/odrive/store/ODriveUserManagement.db
+
+ODrive provides manual utilities for manipulating the database as well:
+
+  ./ruby/odrive/db
+
+ODrive's database is for web access to the ODrive application server,
+not for access to the backend distributed storage system, e.g., Swift.  
+Configuration for distributed storage is managed from the ODrive app
+server User Profile page.
+
+ODrive provides open user registration for the app server.  ODrive does
+_not_ store each user's password; ODrive creates and stores a salted
+hash upon user account creation.  Each log-in attempts reads the
+transient password from the log-in text field, applies the salted hash,
+and compared the result to the value stored in the database.
+
+ODrive cannot, however, "overrule" the password management for the
+target distributed storage.  For example, OpenStack Swift uses an
+encrypted password; thus, ODrive stores an encrypted password for the
+managed distributed storage account, in order to pass the password to
+the distributed storage driver, e.g., ODrive's Swift storage driver.
+
+To use the manual utilities from within the './ruby/odrive/db'
+directory, include /reference the './ruby/odrive' directory, e.g.:
+
+jsmith@sage:~/.../ODrive/ruby/odrive/db$ ruby -I .. user_db_display_users.rb
+userid, password, name, password_hint, password_stale, style, cloud_host, cloud_tenant, cloud_user, cloud_password
+1: admin, 91608911a1ef6ec3c89c5b3cce2b3dd6, Administrator The Great, (none), false, default, (no cloud host), (no cloud tenant), (no cloud user), (no cloud password)
+...
+
+WARNING:  These utilities fully interrogat the database, e.g.,
+displaying passwords, so this part of the (developer) filesystem should
+be protected from end-users of the ODrive app server.
+

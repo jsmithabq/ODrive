@@ -32,9 +32,11 @@ require 'md5'
 require 'logger'
 require 'sequel'
 require 'sqlite_connection.rb'
+require 'db/user_db_util.rb'
 require 'odrive_config.rb'
 require 'models/user_models.rb'
 
+include UserDBUtil # encryption/decryption, etc.
 include ODriveConfig # configuration support
 include UserModels # models for user-related tables
 

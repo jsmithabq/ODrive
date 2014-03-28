@@ -17,7 +17,7 @@
 #   log_level : debug
 #
 # The default configuration file is located relative to the start-up directory:
-# <tt>./odrive.config</tt>.
+# <tt>./conf/odrive.conf</tt>.
 
 require 'fileutils'
 require 'logger'
@@ -38,7 +38,7 @@ require 'odrive_info.rb'
 #   log_level : debug
 #
 # The default configuration file is located relative to the start-up directory:
-# <tt>./odrive.config</tt>.
+# <tt>./conf/odrive.conf</tt>.
 #
 
 module ODriveConfig
@@ -83,15 +83,19 @@ module ODriveConfig
   
     def initialize(file=ODRIVE_CONFIG_FILE)
       super(nil)
+      puts("CWD = '#{FileUtils::pwd()}'.")
       @stdlog = Logger.new(STDOUT)
       @stdlog.level = Logger::DEBUG
       if File.exists?(file)
+        puts("#{MN}::  loading configuration from '#{file}'...")
         YAML.load_file(file).each do |k,v|
           send("#{k}=", v)
+          puts("#{MN}::  key = #{k}, value = #{v}")
         end
         #@stdlog = Logger.new(LOG_DEVICE[get_value(:log_device, 'stdout').to_sym])
         #@stdlog.level = LOG_LEVEL[get_value(:log_level, 'info').to_sym]
         @stdlog = create_logger_from_config(reuse=false)
+        puts("#{MN}::  created standard logger = #{@stdlog}")
         @stdlog.debug("#{MN}:: file = #{file}")
         table.each do |k,v|
           @stdlog.debug("#{MN}::  key = #{k}, value = #{v}")
@@ -115,7 +119,7 @@ module ODriveConfig
     end
 
     #
-    # Creates a logger based on the configuration settings from <tt>odrive.config</tt>.
+    # Creates a logger based on the configuration settings from <tt>odrive.conf</tt>.
     #
     # Returns the reference to the logger instance.
     #

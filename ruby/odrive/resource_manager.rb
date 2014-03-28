@@ -66,7 +66,7 @@ class OpenStackProfile
     @tenant = @tenant.dup
     @user = @user.dup
     @password = @password.dup
-    @cloud = @cloud.dup
+    @cloud = @cloud.dup if @cloud
   end
 
   #

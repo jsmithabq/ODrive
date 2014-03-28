@@ -25,7 +25,8 @@
       window.onload = init;
   %body(topmargin=3)
     #header
-      %p(class='banner' align='center')= @banner
+      - if @banner != ""
+        %p(class='banner' align='center')= @banner
     #mast
       #logo
         %a(id='logo-a' href='/') ODrive
@@ -82,4 +83,5 @@
     %content
       = yield
     #footer
-      %p(class='banner' align='center')= @banner
+      - if @banner != ""
+        %p(class='banner' align='center')= @banner

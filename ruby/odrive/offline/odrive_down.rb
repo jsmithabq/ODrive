@@ -16,7 +16,7 @@ ODRIVE_EXT = '(|\.html|\.xml|\.yaml|\.json|\.atom|\.text|\.txt)$'
 ODRIVE_JSON_PAD = '  '
 ODRIVE_XML_PAD = '  '
 ODRIVE_YAML_PAD = '  '
-ODRIVE_DEFAULT_HEADER = ""
+ODRIVE_DEFAULT_HEADER_FOOTER = ""
 ODRIVE_FORMAT = {
   :text => 'text/plain',
   :html => 'text/html',
@@ -50,7 +50,7 @@ class ODriveAppDown < Sinatra::Base
       rr.append_class_end()
 
       @output = rr.data
-      @banner = ODRIVE_DEFAULT_HEADER
+      @banner = ODRIVE_DEFAULT_HEADER_FOOTER
       handle_response(get_content_type(),
         get_content_type() == :html ? :indextable : :indexcd)
     end

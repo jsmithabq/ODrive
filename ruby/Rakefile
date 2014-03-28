@@ -1,6 +1,9 @@
 task :default => [:odrive]
 
 task :odrive do
+  sh "cd odrive ; test -d downloads || mkdir downloads"
+  sh "cd odrive ; test -d uploads || mkdir uploads"
+  sh "cd odrive ; test -d store || mkdir store"
   sh "cd odrive ; ruby -I . odriveapp.rb"
 end
   
