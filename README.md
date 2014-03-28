@@ -26,12 +26,12 @@ ODrive provides
 Contents
 --------
 
-./python -- Miscelleaneous Python scripts loosely affiliated with ODrive, OpenStack, etc.
-
-./ruby/odrive -- The ODrive application server, client programs, etc.
-./ruby/<other> -- Miscelleanous test code
+* ./python -- Miscelleaneous Python scripts loosely affiliated with ODrive, OpenStack, etc.
+* ./ruby/odrive -- The ODrive application server, client programs, etc.
+* ./ruby/<other> -- Miscelleanous test code
 
 See Also
+--------
 
 See ./ruby/README.txt for information on launching the application server.
 
