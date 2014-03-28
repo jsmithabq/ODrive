@@ -6,7 +6,7 @@
 Summary
 -------
 
-ODrive provides an alternative front-end to object-storage services
+An app server front-end to object-storage services
 such as OpenStack Swift.
 
 Todo
