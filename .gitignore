@@ -5,5 +5,4 @@ ruby/odrive/downloads/*
 ruby/odrive/uploads/*
 ruby/odrive/*.log*
 ruby/odrive/.sass-cache
-ruby/odrive/store/ODriveUserManagement.db
-ruby/odrive/store/ODriveUserManagement.db.bkp
+ruby/odrive/store/ODriveUserManagement*.*
