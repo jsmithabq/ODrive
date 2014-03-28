@@ -16,8 +16,10 @@ ODrive provides
 
 Contents
 
-
-Requirements
+There are several test directories that are not directly relevant, e.g.,
+the test directory for Ramaze, which is not used.  However, the
+directory './ruby/odrive/db' includes command-line utilities for examining
+the user-management database.
 
 The approx. package requirements include (except for the GIT GUI-related
 packages):
