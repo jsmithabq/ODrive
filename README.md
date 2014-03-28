@@ -1,5 +1,4 @@
-ODrive
-------
+
 ![ODrive](./images/ODrive.png "ODrive")
 
 Summary
