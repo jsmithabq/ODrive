@@ -1,5 +1,7 @@
 
-![ODrive](./images/ODrive.png "ODrive")
+<!--![ODrive](./images/ODrive.png "ODrive")-->
+*ODrive*
+========
 
 Summary
 -------
