@@ -39,8 +39,10 @@ supported Swift object store must be specified in the source code
       ...
     ]
 
-The ODrive configuration file supports a default host, plus its
-parameters.
+The ODrive configuration file, './ruby/odrive/conf/odrive.conf', supports
+a default host, plus host-related and other parameters such as log file.
+The Swift configuration file, './ruby/odrive/conf/swift.conf', supports
+Swift driver-related parameters such as log file, ports, etc.
 
 Contents
 --------
