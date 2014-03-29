@@ -13,8 +13,10 @@ such as OpenStack Swift
 Todo
 ----
 
-Currently, ODrive only provides drivers for Swift.  The objective is to
+* Currently, ODrive only provides drivers for Swift.  The objective is to
 support Ceph RADOSGW, as well as other services as they come to market.
+* Currently, ODrive provides an HTML-based web interface.  Many users
+would prefer a more menu-oriented web interface with JavaScript, etc.
 
 Overview
 --------
@@ -43,7 +45,8 @@ parameters.
 Contents
 --------
 
-* './python' -- Miscelleaneous Python scripts loosely affiliated with ODrive, OpenStack, etc.
+* './python' -- Miscelleaneous Python scripts loosely affiliated with ODrive,
+OpenStack, etc.
 * './ruby/odrive' -- The ODrive application server, client programs, etc.
 * './ruby/&lt;other&gt;' -- Miscelleanous test code
 
