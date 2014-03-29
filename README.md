@@ -7,8 +7,7 @@
 Summary
 -------
 
-An app server front-end to object-storage services
-such as OpenStack Swift
+An app server front-end to object-storage services such as OpenStack Swift
 
 Todo
 ----
