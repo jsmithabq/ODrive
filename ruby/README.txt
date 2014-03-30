@@ -37,8 +37,8 @@ default target:
 jsmith@sage:~/X/LocalGit/ODrive/ruby$ rake
 cd odrive ; ruby -I . odriveapp.rb
 SwiftUtil::  log_device = 'swift.log'
-ODriveConfig::  log_device = 'overdrive.log'
-ODriveConfig::  log_device = 'overdrive.log'
+ODriveConfig::  log_device = 'odrive.log'
+ODriveConfig::  log_device = 'odrive.log'
 == Sinatra/1.2.6 has taken the stage on 6799 for development with backup from Thin
 >> Thin web server (v1.3.1 codename Triple Espresso)
 >> Maximum connections set to 1024
@@ -56,8 +56,8 @@ that launches a terminal window, allowing for process termination.
 jsmith@sage:~/X/LocalGit/ODrive/ruby/odrive$ ./odrive.sh
 Running ODrive...
 SwiftUtil::  log_device = 'swift.log'
-ODriveConfig::  log_device = 'overdrive.log'
-ODriveConfig::  log_device = 'overdrive.log'
+ODriveConfig::  log_device = 'odrive.log'
+ODriveConfig::  log_device = 'odrive.log'
 == Sinatra/1.2.6 has taken the stage on 6799 for development with backup from Thin
 >> Thin web server (v1.3.1 codename Triple Espresso)
 >> Maximum connections set to 1024
@@ -67,8 +67,8 @@ ODriveConfig::  log_device = 'overdrive.log'
 
 jsmith@sage:~/X/LocalGit/ODrive/ruby/odrive$ rackup odrive.ru
 SwiftUtil::  log_device = 'swift.log'
-ODriveConfig::  log_device = 'overdrive.log'
-ODriveConfig::  log_device = 'overdrive.log'
+ODriveConfig::  log_device = 'odrive.log'
+ODriveConfig::  log_device = 'odrive.log'
 >> Thin web server (v1.3.1 codename Triple Espresso)
 >> Maximum connections set to 1024
 >> Listening on 0.0.0.0:8080, CTRL+C to stop
