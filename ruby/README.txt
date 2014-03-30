@@ -100,15 +100,19 @@ server User Profile page.
 
 ODrive provides open user registration for the app server.  ODrive does
 _not_ store each user's password; ODrive creates and stores a salted
-hash upon user account creation.  Each log-in attempts reads the
+hash upon user account creation.  Each log-in attempt reads the
 transient password from the log-in text field, applies the salted hash,
 and compared the salted hash to the value stored in the database.
 
-ODrive cannot, however, "overrule" the password management for the
-target distributed storage.  For example, OpenStack Swift uses an
-encrypted password; thus, ODrive stores an encrypted password for the
-managed distributed storage account, in order to pass the password to
-the distributed storage driver, e.g., ODrive's Swift storage driver.
+WARNING:  The source code contains the text for computing the salted hash;
+thus, the source code must be protected/restricted from end-users.
+
+As for the distributed storage credentials, ODrive cannot "overrule" the
+password management for the target distributed storage.  For example,
+OpenStack Swift uses an encrypted password; thus, ODrive stores an
+encrypted password for the managed distributed storage account, in order
+to pass the password to the distributed storage driver, e.g., ODrive's
+Swift storage driver.
 
 To use the manual utilities from within the './ruby/odrive/db'
 directory, include (reference) the './ruby/odrive' directory, e.g.:
