@@ -11,6 +11,20 @@
 module ODriveUtil
   MN = ODriveUtil.name
 
+  # Invokes HAML processing relative to the component hierarchy.
+  #
+  # Arguments:
+  #  template_spec - the file spec for the template files, relative to
+  #    the top-level component hierarchy, e.g.,
+  #    <tt>":hello/views/hello"</tt> - Symbol
+  #  options - the HAML options - Hash
+  #  locals - the HAML locals - Hash
+  #
+
+  def component_haml(template_spec, options={}, locals={})
+    haml "../components/#{template_spec.to_s}".to_sym, options, locals
+  end
+
   #
   # Checks for recognized implied format types by ".<ext>".
   #
