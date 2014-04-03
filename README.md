@@ -54,5 +54,5 @@ OpenStack, etc.
 See Also
 --------
 
-See './ruby/README.txt' for information on launching the application server.
+See ['./ruby/README.txt'](./ruby/README.txt "README.txt") for information on launching the application server.
 
