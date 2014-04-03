@@ -11,6 +11,7 @@
 module ODriveUtil
   MN = ODriveUtil.name
 
+  #
   # Invokes HAML processing relative to the component hierarchy.
   #
   # Arguments:
@@ -108,6 +109,7 @@ module ODriveUtil
     end
   end
 
+  #
   # Checks a source hash for elements that match the keys subset and produces a
   # target hash by reducing the target to the matched (k,v) pairs.
   #
