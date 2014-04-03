@@ -21,13 +21,12 @@ the test directory for Ramaze, which is not used.  However, the
 directory './ruby/odrive/db' includes command-line utilities for examining
 the user-management database.
 
-The approx. package requirements include (except for the GIT GUI-related
-packages):
+The approx. package requirements include:
 
 apt-get install libjson-ruby libjson-ruby-doc libpgsql-ruby \
   libpgsql-ruby-doc librack-ruby librestclient-ruby libruby \
   libsequel-ruby libsinatra-ruby libsqlite3-ruby rake ruby \
-  thin ruby-haml git git-core giggle git-doc git-gui git-man gitk
+  thin ruby-haml
 
 Running ODrive
 
