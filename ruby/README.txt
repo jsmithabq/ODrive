@@ -72,18 +72,13 @@ ODriveConfig::  log_device = 'odrive.log'
 >> Maximum connections set to 1024
 >> Listening on 0.0.0.0:8080, CTRL+C to stop
 
-4. The primary reason for the shell script, as well as the rake targets, is
+The primary reason for the shell script, as well as the rake targets, is
 to set the "include" paths, so that Ruby files can use 'require'
 directives that are free of path specs.
 
-Stage 1
-  Build RESTful resources for virtually everything.
-Stage 2
-  Start a pairwise top-down and bottom-up design and development of
-  end-user functionality, leveraging the RESTful resources as much as
-  possible.
+User-management Database
 
-5. ODrive creates a user-management database in the following location:
+ODrive creates a user-management database in the following location:
 
   ./ruby/odrive/store/ODriveUserManagement.db
 
@@ -124,6 +119,12 @@ userid, password, name, password_hint, password_stale, style, cloud_host, cloud_
 WARNING:  These utilities fully interrogate the database, e.g.,
 displaying passwords, so this part of the (developer) filesystem should
 be protected from end-users of the ODrive app server.
+
+RESTful Clients
+
+ODrive provides example RESTful clients in the following directory:
+
+  ./ruby/odrive/client 
 
 Testing History
 
